@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    all: './source/javascripts/all.jsx'
+    all: './source/javascripts/all.js'
   },
 
   resolve: {
@@ -24,6 +24,14 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: ['react', 'es2015', 'stage-0']
+        }
+      },
+      {
+        test: /\.js?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015']
         }
       }
     ]
