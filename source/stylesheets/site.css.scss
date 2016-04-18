@@ -27,6 +27,20 @@ header {
   }
 }
 
+.uhw_logo_container {
+  width: 15vw;
+  height: auto;
+  margin: auto;
+  margin-bottom: -8vw;
+  -webkit-transform: translate(0%, -50%);
+     -moz-transform: translate(0%, -50%);
+      -ms-transform: translate(0%, -50%);
+       -o-transform: translate(0%, -50%);
+          transform: translate(0%, -50%);
+  & img {
+    width: 100%;
+  }
+}
 .body_text {
   font-family: $bodyFont;
   font-size: 1.5vw;
@@ -37,6 +51,7 @@ header {
   max-width: 900px;
   text-align: center;
   margin: auto;
+  margin-top: 0;
 }
 
 .thanks{
