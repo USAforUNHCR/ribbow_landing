@@ -1,7 +1,7 @@
 @charset "utf-8";
 @import "normalize";
-$headerFont: 'Anton', sans-serif;
-$bodyFont: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$headerFont: "Arvo", sans-serif;
+$bodyFont: 'Rambla', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 header {
   width: 100%;
@@ -45,10 +45,10 @@ header {
   font-family: $bodyFont;
   font-size: 1.5vw;
   @media screen and (max-width: 700px) {
-    font-size: 3vw;
+    font-size: 3.5vw;
   }
   width: 70%;
-  max-width: 900px;
+  max-width: 700px;
   text-align: center;
   margin: auto;
   margin-top: 0;
@@ -133,7 +133,7 @@ body {
     }
     & input {
       @media screen and (max-width: 700px) {
-        font-size: 2vw;
+        font-size: 2.5vw;
       }
       display: inline;
       width: 50%;
@@ -156,6 +156,14 @@ body {
     }
   }
 }
+
+.incentives_container {
+  text-align: center;
+  & button {
+    padding: 0.5em;
+  }
+}
+
 .site-footer {
   text-align: center;
   position: absolute;

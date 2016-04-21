@@ -1,12 +1,15 @@
 import {merge}        from 'ramda';
 
 $(document).ready(() => {
-  const listener = new formListener();
+  const app = new App();
 });
 
 
 
-function formListener(){
+function App(){
+  this.incentives = ['recipies','emojis','prayer'];
+
+  this.incentive = this.incentives[Math.floor(Math.random() * 3)];
 
   this.getFields = (form) => {
   
