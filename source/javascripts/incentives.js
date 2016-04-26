@@ -5,6 +5,7 @@ $(document).ready(function(){
 function Incentives() {
   let source = querystring.parse(location.search).source;
   let email = querystring.parse(location.search).email;
+  let incentive = querystring.parse(location.search).incentive;
 
   this.groundwork = new Groundwork ({ 'apiUrl': 'https://api.thegroundwork.com',
               'apiKey': 'pub-un-test.jesus-was-a-refugee-test-int-MUEAS9X5941jPRczITpf0anqMFqunzzh6YAgImx0EUT18aBcBPIIVdEsx7wK4kcSibY3hpFhpv9H0_GgOUp4SA'
@@ -13,7 +14,6 @@ function Incentives() {
   $('.incentives_container').click(event,function (event){
     event.preventDefault();
     if (event.target.tagName == 'BUTTON') {
-      let incentive = event.target.id;
       incentives.sendIncentive(incentive);
     }
   });
@@ -41,4 +41,42 @@ function Incentives() {
       console.log(resp);
     });
   }
+
+  let getHeader = function(incentive) {
+    if (incentive === "emojis") {
+      return "Be inspired by Pope Francis";
+    }
+    else if (incentive === "prayers") {
+      return "&quotBe merciful, just as your Father is merciful.&quot - Luke 6:36";
+    }
+    else if (incentive === "recipes") {
+      return "Enjoy these recipes from around the world!";
+    }
+  }
+
+  let getCopy = function(incentive) {
+    if (incentive === "emojis")
+      return "<p>Pope Francis is an excellent example of loving and helping those in need. Use these emojis as a reminder of his work and chance to have a little fun!</p>";
+    else if(incentive === "prayers") {
+      return "<p>We all need reminders to look beyond ourselves. Enjoy these professionally designed devotionals with scripture and quotes reminding us of the importance reaching out to those in need.</p>"
+    }
+    else if (incentive === "recipes") {
+      "<p>For centuries meals have been used as a sign of peace and a way to gather friends and family together. Recipes can be deeply personal things passed down from person to person as part of a family tradition, but they can also be used to explore different cultures through the food they consume.</p><p>Each of these recipes describes how to make dishes from countries around the world. We hope that as you enjoy these dishes you will explore other aspects of the countries culture.</p>"
+    }
+  }
+
+  let makeButton = function(incentive) {
+    return "<button id=" 
+  }
+
+  this.addCopy = function(incentive) {
+
+    if (incentive === undefined) {
+      incentive = "emojis";
+    }
+
+    $('.incentive_header').html(getHeader(incentive));
+    $('.incentive_copy').html(getCopy(incentive));
+    $('.incentives_container').append(makeButton(incentive));
+  }();
 }

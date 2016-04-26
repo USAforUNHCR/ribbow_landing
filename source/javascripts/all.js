@@ -7,9 +7,10 @@ $(document).ready(() => {
 
 
 function App(){
-  this.incentives = ['recipies','emojis','prayer'];
 
-  this.incentive = this.incentives[Math.floor(Math.random() * 3)];
+  this.incentive = querystring.parse(location.search).incentive;
+
+  this.createCopy(this.incentive);
 
   this.getFields = (form) => {
   
@@ -50,6 +51,12 @@ function App(){
     let payload = merge(data, this.getFields($('.signupForm')));
     this.sendData(payload)
   });
+
+  this.createCopy(incentive) {
+    if(incentive === undefined) {
+      
+    }
+  }
 };
 
 
