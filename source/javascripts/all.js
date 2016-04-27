@@ -8,9 +8,13 @@ $(document).ready(() => {
 
 function App(){
 
-  this.incentive = querystring.parse(location.search).incentive;
+  let incentive = querystring.parse(location.search).incentive;
 
-  this.createCopy(this.incentive);
+  let incentiveData = {
+    emojis: "Pope Emojis",
+    devotionals: "Prayer Devotionals",
+    recipes: "Recipes"
+  };
 
   this.getFields = (form) => {
   
@@ -31,7 +35,7 @@ function App(){
     groundwork.supporters.create(payload)
     .then((resp) => {
       console.log(resp);
-      window.location = "/thanks.html"
+      window.location = "/thanks.html?incentive=" + incentive; 
     })
     .catch((resp) => {
       console.log(resp);
@@ -50,13 +54,17 @@ function App(){
     }
     let payload = merge(data, this.getFields($('.signupForm')));
     this.sendData(payload)
-  });
+  })
 
-  this.createCopy(incentive) {
+  this.createCopy = (incentive) => {
     if(incentive === undefined) {
-      
+      incentive = "emojis";
     }
+    $(".form_header").html("Add your name to the list of people who want to help generate change and recive your " + incentiveData[incentive] + "!"); 
+    $(".form_submit").html("Get Your " + incentiveData[incentive]);
   }
+
+  this.createCopy(incentive);
 };
 
 

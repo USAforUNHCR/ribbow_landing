@@ -7,6 +7,12 @@ function Incentives() {
   let email = querystring.parse(location.search).email;
   let incentive = querystring.parse(location.search).incentive;
 
+  const image_data = {
+    emojis: "../images/pope_emoji.jpg",
+    devotionals: "../images/church.jpeg",
+    recipes: "../images/recipe_logo.jpeg"
+  }
+
   this.groundwork = new Groundwork ({ 'apiUrl': 'https://api.thegroundwork.com',
               'apiKey': 'pub-un-test.jesus-was-a-refugee-test-int-MUEAS9X5941jPRczITpf0anqMFqunzzh6YAgImx0EUT18aBcBPIIVdEsx7wK4kcSibY3hpFhpv9H0_GgOUp4SA'
             });
@@ -46,7 +52,7 @@ function Incentives() {
     if (incentive === "emojis") {
       return "Be inspired by Pope Francis";
     }
-    else if (incentive === "prayers") {
+    else if (incentive === "devotionals") {
       return "&quotBe merciful, just as your Father is merciful.&quot - Luke 6:36";
     }
     else if (incentive === "recipes") {
@@ -57,7 +63,7 @@ function Incentives() {
   let getCopy = function(incentive) {
     if (incentive === "emojis")
       return "<p>Pope Francis is an excellent example of loving and helping those in need. Use these emojis as a reminder of his work and chance to have a little fun!</p>";
-    else if(incentive === "prayers") {
+    else if(incentive === "devotionals") {
       return "<p>We all need reminders to look beyond ourselves. Enjoy these professionally designed devotionals with scripture and quotes reminding us of the importance reaching out to those in need.</p>"
     }
     else if (incentive === "recipes") {
@@ -66,17 +72,18 @@ function Incentives() {
   }
 
   let makeButton = function(incentive) {
-    return "<button id=" 
+    return "<img src='" + image_data[incentive] + "'/><span>Click to Download</span>";  
   }
 
   this.addCopy = function(incentive) {
-
     if (incentive === undefined) {
       incentive = "emojis";
     }
 
     $('.incentive_header').html(getHeader(incentive));
     $('.incentive_copy').html(getCopy(incentive));
-    $('.incentives_container').append(makeButton(incentive));
-  }();
+    $('.download_button').html(makeButton(incentive));
+  };
+
+  this.addCopy(incentive);
 }

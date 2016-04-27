@@ -59,15 +59,28 @@ header {
   color: #5e5842;
   font-size: 1.5em;
   padding: 1em;
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
     & button{
-    margin-left: 0.5em;
+    padding: 1.5em;
+    box-sizing: border-box;
+    margin-top: 0.8em;
     font-size: 0.7em;
-    background-color: white;
-    border: solid 1px black;
+    background-color: #fffaeb;
+    border: solid #5e5842 3px;
+    color: #5e5842;
     transition: all 0.2s ease-in-out;
+    opacity: 1;
+    & img {
+      margin-bottom: 0.5em;
+    }
     &:hover{
-      background-color: black;
-      color: white;
+      opacity: 0.8;
+      color: black;
+    }
+    & span {
+      margin-top: 0.5em;
     }
   }
   & .image_container {
@@ -162,6 +175,16 @@ body {
   text-align: center;
   & button {
     padding: 0.5em;
+  }
+}
+
+.download_button {
+  border: white 1px auto;
+  border-radius: 0.5em;
+  & img {
+    width: 70%;
+    display: block;
+    margin: auto;
   }
 }
 
