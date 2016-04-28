@@ -57,7 +57,7 @@ header {
 .thanks{
   font-family: $headerFont;
   color: #5e5842;
-  font-size: 1.5em;
+  font-size: 3vw;
   padding: 1em;
   width: 90%;
   max-width: 1000px;
@@ -84,11 +84,10 @@ header {
     }
   }
   & .image_container {
-    width: 7vw;
-    margin: auto;
     margin-top: 2em;
+    text-align: center;
     & img {
-      width: 100%;
+      width: 7vw;  
     }
   }
 }
@@ -173,7 +172,12 @@ body {
 
 .incentives_container {
   text-align: center;
+  & .download_link {
+    width: 80%;
+  }
   & button {
+    width: 40%;
+    max-width: 300px;
     padding: 0.5em;
   }
 }

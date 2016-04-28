@@ -5,26 +5,36 @@ $(document).ready(function(){
 function Incentives() {
   let source = querystring.parse(location.search).source;
   let email = querystring.parse(location.search).email;
-  let incentive = querystring.parse(location.search).incentive;
+  let incentive = querystring.parse(location.search).incentive || "emojis";
 
-  const image_data = {
-    emojis: "../images/pope_emoji.jpg",
-    devotionals: "../images/church.jpeg",
-    recipes: "../images/recipe_logo.jpeg"
+  const incentive_data = {
+    emojis: {
+              image: "../images/pope_emoji.jpg",
+              file: "../public/pope_emojis.zip"
+            },
+    devotionals: {
+                    image: "../images/church.jpeg",
+                    file: "../public/devotionals.pdf"
+                  },
+    recipes: {
+                image: "../images/recipe_logo.jpeg",
+                file: "../public/recipes.pdf"
+             }
   }
+
+
 
   this.groundwork = new Groundwork ({ 'apiUrl': 'https://api.thegroundwork.com',
               'apiKey': 'pub-un-test.jesus-was-a-refugee-test-int-MUEAS9X5941jPRczITpf0anqMFqunzzh6YAgImx0EUT18aBcBPIIVdEsx7wK4kcSibY3hpFhpv9H0_GgOUp4SA'
             });
 
-  $('.incentives_container').click(event,function (event){
-    event.preventDefault();
-    if (event.target.tagName == 'BUTTON') {
-      incentives.sendIncentive(incentive);
-    }
+  $('.download_link').click(event,function (event){
+    event.preventDefault(); //BUGBUG - remove line for deployment
+    incentives.sendIncentive(incentive);
   });
 
   this.sendIncentive = function(incentive){
+    debugger;
     data = {};
     data.source = "Ribbow incentive " + (source ? source + " " : "") + incentive; 
     data.tags = {
@@ -67,22 +77,20 @@ function Incentives() {
       return "<p>We all need reminders to look beyond ourselves. Enjoy these professionally designed devotionals with scripture and quotes reminding us of the importance reaching out to those in need.</p>"
     }
     else if (incentive === "recipes") {
-      "<p>For centuries meals have been used as a sign of peace and a way to gather friends and family together. Recipes can be deeply personal things passed down from person to person as part of a family tradition, but they can also be used to explore different cultures through the food they consume.</p><p>Each of these recipes describes how to make dishes from countries around the world. We hope that as you enjoy these dishes you will explore other aspects of the countries culture.</p>"
+      return "<p>For centuries meals have been used as a sign of peace and a way to gather friends and family together. We have collected recipes from five countries with refugee crises. We hope you enjoy these dishes as you explore cultures through the food they consume.</p>"
     }
   }
 
   let makeButton = function(incentive) {
-    return "<img src='" + image_data[incentive] + "'/><span>Click to Download</span>";  
+    return "<img src='" + incentive_data[incentive].image + "'/><span>Click to Download</span>";  
   }
 
   this.addCopy = function(incentive) {
-    if (incentive === undefined) {
-      incentive = "emojis";
-    }
 
     $('.incentive_header').html(getHeader(incentive));
     $('.incentive_copy').html(getCopy(incentive));
     $('.download_button').html(makeButton(incentive));
+    $('.download_link').attr("href", incentive_data[incentive].file);
   };
 
   this.addCopy(incentive);

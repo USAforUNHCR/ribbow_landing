@@ -8,7 +8,7 @@ $(document).ready(() => {
 
 function App(){
 
-  let incentive = querystring.parse(location.search).incentive;
+  let incentive = querystring.parse(location.search).incentive || "emojis";
 
   let incentiveData = {
     emojis: "Pope Emojis",
@@ -35,7 +35,7 @@ function App(){
     groundwork.supporters.create(payload)
     .then((resp) => {
       console.log(resp);
-      window.location = "/thanks.html?incentive=" + incentive; 
+      window.location = "/thanks.html?incentive=" + incentive + "&email=" + payload.email; 
     })
     .catch((resp) => {
       console.log(resp);
@@ -57,9 +57,6 @@ function App(){
   })
 
   this.createCopy = (incentive) => {
-    if(incentive === undefined) {
-      incentive = "emojis";
-    }
     $(".form_header").html("Add your name to the list of people who want to help generate change and recive your " + incentiveData[incentive] + "!"); 
     $(".form_submit").html("Get Your " + incentiveData[incentive]);
   }
