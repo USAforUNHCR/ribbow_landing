@@ -72,7 +72,7 @@ function Incentives() {
 
   let getCopy = function(incentive) {
     if (incentive === "emojis")
-      return "<p>Pope Francis is an excellent example of loving and helping those in need. Use these emojis as a reminder of his work and chance to have a little fun!</p>";
+      return "<p>Pope Francis is an excellent example of someone who has been loving and helpful to those in need. Use these emojis as a reminder of his work and as a chance to have a little fun!</p>";
     else if(incentive === "devotionals") {
       return "<p>We all need reminders to look beyond ourselves. Enjoy these professionally designed devotionals with scripture and quotes reminding us of the importance reaching out to those in need.</p>"
     }
