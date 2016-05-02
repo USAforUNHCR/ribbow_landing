@@ -6,6 +6,7 @@ function Incentives() {
   let source = querystring.parse(location.search).source;
   let email = querystring.parse(location.search).email;
   let incentive = querystring.parse(location.search).incentive || "emojis";
+  let medium = querystring.parse(location.search).medium;
 
   const incentive_data = {
     emojis: {
@@ -25,7 +26,7 @@ function Incentives() {
 
 
   this.groundwork = new Groundwork ({ 'apiUrl': 'https://api.thegroundwork.com',
-              'apiKey': 'pub-un-test.jesus-was-a-refugee-test-int-MUEAS9X5941jPRczITpf0anqMFqunzzh6YAgImx0EUT18aBcBPIIVdEsx7wK4kcSibY3hpFhpv9H0_GgOUp4SA'
+              'apiKey': 'pub-un.ribbow_acquisition--VQ2jFJ92HGHQc1B4D_wh_2xd7IOCsUklmecKCPh6IZVfJ7QRDH9U3ubIsxVQ7aX3Aqi8iapcW5jMMyjshxVJVQ'
             });
 
   $('.download_link').click(event,function (event){
@@ -40,6 +41,10 @@ function Incentives() {
     };
     data.tags.incentive = incentive;
 
+    if(medium){
+      data.tags.medium = medium;
+    }
+
     if (email) {
       data.email = email;
     }
@@ -49,10 +54,10 @@ function Incentives() {
   this.createRecord = function(payload) {
     this.groundwork.supporters.create(payload)
     .then((resp) => {
-      console.log(resp);
+      
     })
     .catch((resp) => {
-      console.log(resp);
+      
     });
   }
 

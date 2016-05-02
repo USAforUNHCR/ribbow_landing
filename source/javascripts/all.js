@@ -10,6 +10,7 @@ function App(){
 
   let incentive = querystring.parse(location.search).incentive || "emojis";
   let source = querystring.parse(location.search).source || "";
+  let medium = querystring.parse(location.search).medium;
 
   let incentiveData = {
     emojis: "Pope Emojis",
@@ -31,15 +32,15 @@ function App(){
 
   this.sendData = (payload) => {
     const groundwork = new Groundwork ({ 'apiUrl': 'https://api.thegroundwork.com',
-              'apiKey': 'pub-un-test.ribbow_acquisition--CW.CB.4thYvOcjnO3Xv8j1XXUpGUBk1izQu.tuavKptXE_P6BmcoDd8DuvqEo6eaFUVHiuO52Ds3KIGM5LmQZw'
+              'apiKey': 'pub-un.ribbow_acquisition--VQ2jFJ92HGHQc1B4D_wh_2xd7IOCsUklmecKCPh6IZVfJ7QRDH9U3ubIsxVQ7aX3Aqi8iapcW5jMMyjshxVJVQ'
             });
     groundwork.supporters.create(payload)
     .then((resp) => {
-      console.log(resp);
+      
       window.location = "/thanks.html?incentive=" + incentive + "&email=" + payload.email;
     })
     .catch((resp) => {
-      console.log(resp);
+      
       $('.signupForm').append('<p>Something went wrong, please try again</p>')
     });
   }
@@ -53,6 +54,9 @@ function App(){
             send_email: 0
           }
     }
+    if (medium){
+      data.tags.medium = medium;
+    } 
     let payload = merge(data, this.getFields($('.signupForm')));
     this.sendData(payload)
   })
