@@ -34,7 +34,6 @@ function Incentives() {
   });
 
   this.sendIncentive = function(incentive){
-    debugger;
     data = {};
     data.source = "Ribbow incentive " + (source ? source + " " : "") + incentive; 
     data.tags = {
