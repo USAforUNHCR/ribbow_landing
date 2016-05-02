@@ -29,7 +29,6 @@ function Incentives() {
             });
 
   $('.download_link').click(event,function (event){
-    event.preventDefault(); //BUGBUG - remove line for deployment
     incentives.sendIncentive(incentive);
   });
 
