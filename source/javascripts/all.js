@@ -30,7 +30,7 @@ function App(){
 
   this.sendData = (payload) => {
     const groundwork = new Groundwork ({ 'apiUrl': 'https://api.thegroundwork.com',
-              'apiKey': 'pub-un-test.jesus-was-a-refugee-test-int-MUEAS9X5941jPRczITpf0anqMFqunzzh6YAgImx0EUT18aBcBPIIVdEsx7wK4kcSibY3hpFhpv9H0_GgOUp4SA'
+              'apiKey': 'pub-un-test.ribbow_acquisition--CW.CB.4thYvOcjnO3Xv8j1XXUpGUBk1izQu.tuavKptXE_P6BmcoDd8DuvqEo6eaFUVHiuO52Ds3KIGM5LmQZw'
             });
     groundwork.supporters.create(payload)
     .then((resp) => {
