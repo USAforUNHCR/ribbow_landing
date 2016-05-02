@@ -9,6 +9,7 @@ $(document).ready(() => {
 function App(){
 
   let incentive = querystring.parse(location.search).incentive || "emojis";
+  let source = querystring.parse(location.search).source || "";
 
   let incentiveData = {
     emojis: "Pope Emojis",
@@ -35,7 +36,7 @@ function App(){
     groundwork.supporters.create(payload)
     .then((resp) => {
       console.log(resp);
-      window.location = "/thanks.html?incentive=" + incentive + "&email=" + payload.email; 
+      window.location = "/thanks.html?incentive=" + incentive + "&email=" + payload.email;
     })
     .catch((resp) => {
       console.log(resp);
@@ -46,7 +47,7 @@ function App(){
   $('.form_submit').click( (e) => {
     e.preventDefault();
     const data = {
-      source: "Refugee Jesus Site Signup",
+      source: "Refugee Jesus Signup " + source,
       tags: 
           {
             send_email: 0
