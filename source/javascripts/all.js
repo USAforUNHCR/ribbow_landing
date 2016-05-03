@@ -62,7 +62,7 @@ function App(){
   })
 
   this.createCopy = (incentive) => {
-    $(".form_header").html("Add your name to the list of people who want to help generate change and recive your " + incentiveData[incentive] + "!"); 
+    $(".form_header").html("Add your name to the list of people who want to help generate change and receive your " + incentiveData[incentive] + "!"); 
     $(".form_submit").html("Get Your " + incentiveData[incentive]);
   }
 
