@@ -3,7 +3,8 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    all: './source/javascripts/all.js'
+    all: './source/javascripts/all.js',
+    incentives: './source/javascripts/incentives.js'
   },
 
   resolve: {
