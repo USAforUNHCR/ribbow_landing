@@ -11,8 +11,8 @@ function Incentives() {
   const incentive_data = {
     emojis: {
               image: "../images/pope_emoji.jpg",
-              file: "../public/pope_emojis.zip",
-              type: "application/zip"
+              file: "http://swyftmedia.com/apps/app.php?app=popeIsHope",
+              type: "html"
             },
     devotionals: {
                     image: "../images/church.jpeg",
