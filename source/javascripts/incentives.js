@@ -11,15 +11,18 @@ function Incentives() {
   const incentive_data = {
     emojis: {
               image: "../images/pope_emoji.jpg",
-              file: "../public/pope_emojis.zip"
+              file: "../public/pope_emojis.zip",
+              type: "application/zip"
             },
     devotionals: {
                     image: "../images/church.jpeg",
-                    file: "../public/devotionals.pdf"
+                    file: "../public/devotionals.pdf",
+                    type: "application/pdf"
                   },
     recipes: {
                 image: "../images/recipe_logo.jpeg",
-                file: "../public/recipes.pdf"
+                file: "../public/recipes.pdf",
+                type: "application/pdf"
              }
   }
 
@@ -92,6 +95,7 @@ function Incentives() {
     $('.incentive_copy').html(getCopy(incentive));
     $('.download_button').html(makeButton(incentive));
     $('.download_link').attr("href", incentive_data[incentive].file);
+    $('.download_link').attr("type", incentive_data[incentive].type);
   };
 
   this.addCopy(incentive);
