@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  incentives = new Incentives();
+  var incentives = new Incentives();
 });
 
 function Incentives() {
@@ -23,18 +23,12 @@ function Incentives() {
              }
   }
 
-
-
-  this.groundwork = new Groundwork ({ 'apiUrl': 'https://api.thegroundwork.com',
-              'apiKey': 'pub-un.ribbow_acquisition--VQ2jFJ92HGHQc1B4D_wh_2xd7IOCsUklmecKCPh6IZVfJ7QRDH9U3ubIsxVQ7aX3Aqi8iapcW5jMMyjshxVJVQ'
+  Incentives.groundwork = new Groundwork ({ 'apiUrl': 'https://api.thegroundwork.com',
+              'apiKey': 'pub-un-test.ribbow_acquisition--CW.CB.4thYvOcjnO3Xv8j1XXUpGUBk1izQu.tuavKptXE_P6BmcoDd8DuvqEo6eaFUVHiuO52Ds3KIGM5LmQZw'
             });
 
-  $('.download_link').click(event,function (event){
-    incentives.sendIncentive(incentive);
-  });
-
-  this.sendIncentive = function(incentive){
-    data = {};
+  Incentives.sendIncentive = function(incentive){
+    let data = {};
     data.source = "Ribbow incentive " + (source ? source + " " : "") + incentive; 
     data.tags = {
       send_email: 0
@@ -51,13 +45,17 @@ function Incentives() {
     this.createRecord(data);
   }
 
-  this.createRecord = function(payload) {
-    this.groundwork.supporters.create(payload)
+  $('.download_link').click(function (event){
+    Incentives.sendIncentive(incentive);
+  });
+
+  Incentives.createRecord = function(payload) {
+    Incentives.groundwork.supporters.create(payload)
     .then((resp) => {
-      
+
     })
     .catch((resp) => {
-      
+
     });
   }
 
