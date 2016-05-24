@@ -46,7 +46,7 @@ function App(){
   }
 
   $('.form_submit').click( (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const data = {
       source: "Refugee Jesus Signup " + source,
       tags: 
@@ -58,7 +58,9 @@ function App(){
       data.tags.medium = medium;
     } 
     let payload = merge(data, this.getFields($('.signupForm')));
-    this.sendData(payload)
+    if(payload.email && payload.givenName && payload.familyName) {
+      this.sendData(payload)
+    }
   })
 
   this.createCopy = (incentive) => {
