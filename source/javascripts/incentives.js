@@ -27,7 +27,7 @@ function Incentives() {
   }
 
   Incentives.groundwork = new Groundwork ({ 'apiUrl': 'https://api.thegroundwork.com',
-              'apiKey': 'pub-un-test.ribbow_acquisition--CW.CB.4thYvOcjnO3Xv8j1XXUpGUBk1izQu.tuavKptXE_P6BmcoDd8DuvqEo6eaFUVHiuO52Ds3KIGM5LmQZw'
+              'apiKey': 'pub-un.ribbow_acquisition--VQ2jFJ92HGHQc1B4D_wh_2xd7IOCsUklmecKCPh6IZVfJ7QRDH9U3ubIsxVQ7aX3Aqi8iapcW5jMMyjshxVJVQ'
             });
 
   Incentives.sendIncentive = function(incentive){
